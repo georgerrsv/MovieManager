@@ -97,8 +97,7 @@ class Proxy:
             exit()
 
     def doOperation(self, objectReference, methodId, arguments):
-        requestId = self.requestId
-        message = Message(0, objectReference, methodId, arguments, requestId)
+        message = Message(0, objectReference, methodId, arguments, self.requestId)
         headerJson = message.toJson()
 
         while True:
