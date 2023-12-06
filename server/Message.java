@@ -1,3 +1,4 @@
+package server;
 import org.json.JSONObject;
 
 public class Message {
