@@ -27,7 +27,7 @@ def tryInput(prompt):
 print("-------------------------------------")
 print("Movie catalog manager")
 print("-------------------------------------")
-print("Options:\n1-Create account\n2-Login\n3-Clear screen\n4-Exit")
+print("Options:\n1-Create account\n2-Login\n3-Lost account\n4-Clear screen\n5-Exit")
 print("-----------------------------------")
 
 while True:
@@ -74,22 +74,32 @@ while True:
                 movieProxy.showDetails(id)
 
             elif option == 4:
+                print("Logging out...")
+                time.sleep(1)
+                userProxy.close()
+                movieProxy.close()
                 break
 
             else:
                 print("Error: invalid option")
 
     elif option == 3:
-        system('clear')
+        print("Recover password")
+        email = input("Email: ")
+        userProxy.recovery(email)
+
+    elif option == 4:
+        system("clear")
         print("-------------------------------------")
         print("Movie catalog manager")
         print("-------------------------------------")
-        print("Options:\n1-Create account\n2-Login\n3-Clear screen\n4-Exit")
+        print("Options:\n1-Create account\n2-Login\n3-Forget email or password\n4-Clear screen\n5-Exit")
         print("-----------------------------------")
 
-    elif option == 4:
-        print("Logging out...")
+    elif option == 5:
+        print("Exiting...")
         time.sleep(1)
-        userProxy.close()
-        movieProxy.close()
         break
+
+    else:
+        print("Error: invalid option")
