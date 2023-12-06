@@ -28,7 +28,7 @@ print("-------------------------------------")
 print("Movie catalog manager")
 print("-------------------------------------")
 print("Options:\n1-Create account\n2-Login\n3-Clear screen\n4-Exit")
-print("-----------------------------------")
+print("-------------------------------------")
 
 while True:
 

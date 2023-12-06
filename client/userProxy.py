@@ -88,7 +88,7 @@ class userProxy:
             data = self.doOperation("user", "showAll", "")
 
             if "Error" in data:
-                print("\nUser not found!\n")
+                print("\nEmpty catalog!\n")
                 return
             
             try:
