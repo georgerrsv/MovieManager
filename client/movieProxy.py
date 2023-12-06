@@ -16,7 +16,7 @@ class movieProxy:
 
     def addMovie(self, movie):
         movieJson = movie.toJson()
-        data = self.doOperation("movie", 1, movieJson)
+        data = self.doOperation("movie", "1", movieJson)
 
         if "Success" in data:
             print("\nMovie successfully added!\n")
@@ -34,7 +34,7 @@ class movieProxy:
             return
 
     def removeMovie(self, id):
-        data = self.doOperation("movie", 2, id)
+        data = self.doOperation("movie", "2", id)
 
         if "Error" in data:
             print("\nMovie not found!\n")
@@ -52,7 +52,7 @@ class movieProxy:
             return
 
     def showDetails(self, id):
-        data = self.doOperation("movie", 3, id)
+        data = self.doOperation("movie", "3", id)
 
         if "Error" in data:
             print("\nMovie not found!\n")
@@ -69,7 +69,7 @@ class movieProxy:
             return
 
     def showCatalog(self):
-        data = self.doOperation("movie", 4, "")
+        data = self.doOperation("movie", "4", "")
 
         if "Error" in data:
             print("\nEmpty catalog!\n")

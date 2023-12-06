@@ -23,16 +23,15 @@ def tryInput(prompt):
         else:
             print("Error: invalid value")
 
-
-print("-------------------------------------")
-print("Movie catalog manager")
-print("-------------------------------------")
-print("Options:\n1-Create account\n2-Login\n3-Clear screen\n4-Exit")
-print("-------------------------------------")
-
 while True:
 
-    option = tryInput("Choose your option: ")
+    print("-------------------------------------")
+    print("USER INFO SYSTEM")
+    print("-------------------------------------")
+    print("Options:\n1-Create account\n2-Login\n3-Clear screen\n4-Exit")
+    print("-------------------------------------")
+
+    option = tryInput("\nChoose your option: ")
 
     if option == 1:
         fname = input("Enter your first name: ")
@@ -43,9 +42,13 @@ while True:
         userProxy.addUser(user)
 
     elif option == 2:
+        
         email = input("Email: ")
         password = input("Password: ")
         userProxy.login(email, password)
+        print("-------------------------------------")
+        print("MOVIE MANAGEMENT SYSTEM")
+        print("-------------------------------------")
         print("Welcome!\n")
 
         while True:
@@ -77,10 +80,8 @@ while True:
                 movieProxy.showCatalog()
 
             elif option == 5:
-                print("Logging out...")
+                print("Logging out...\n")
                 time.sleep(1)
-                userProxy.close()
-                movieProxy.close()
                 break
 
             else:
@@ -88,11 +89,6 @@ while True:
 
     elif option == 3:
         system("clear")
-        print("-------------------------------------")
-        print("Movie catalog manager")
-        print("-------------------------------------")
-        print("Options:\n1-Create account\n2-Login\n3-Clear screen\n4-Exit")
-        print("-----------------------------------")
 
     elif option == 4:
         print("Exiting...")

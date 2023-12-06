@@ -39,18 +39,19 @@ class userProxy:
 
             if "Error" in data:
                 print("\nUser not found!\n")
-                return
+                return False
 
             if "Success" in data:
                 print("\nUser successfully logged in!\n")
-                return
+                return True
 
             try:
                 header = Message.fromJson(data)
                 print(header.arguments)
             except Exception as e:
                 print("Error:", str(e))
-                return
+                
+            return False
             
         def removeUser(self, userId):
             data = self.doOperation("user", "remove", userId)
@@ -84,21 +85,6 @@ class userProxy:
                 print("Error:", str(e))
                 return
             
-        def showAll(self):
-            data = self.doOperation("user", "showAll", "")
-
-            if "Error" in data:
-                print("\nEmpty catalog!\n")
-                return
-            
-            try:
-                header = Message.fromJson(data)
-                catalog = json.loads(header.arguments)
-                for user in catalog:
-                    print(f"\nID: {user['userId']}\nUsername: {user['fname']} {user['lname']}\n")
-            except Exception as e:
-                print("Error:", str(e))
-                return
             
         def timeout(self):
             if self.count < self.maxCount:
