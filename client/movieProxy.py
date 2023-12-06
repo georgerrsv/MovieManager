@@ -71,7 +71,7 @@ class movieProxy:
     def showCatalog(self):
         data = self.doOperation("movie", 4, "")
 
-        if "Empty catalog" in data:
+        if "Error" in data:
             print("\nEmpty catalog!\n")
             return
 
