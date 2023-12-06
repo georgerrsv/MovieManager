@@ -92,7 +92,7 @@ class Proxy:
             print("Trying again...")
             time.sleep(1)
         else:
-            print("\nServer is unavailable. Exiting...\n")
+            print("\nServer is unavailable. Try again later...\n")
             time.sleep(1)
             self.close()
             exit()
