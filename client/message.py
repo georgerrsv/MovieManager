@@ -2,30 +2,30 @@ from json import *
 
 class Message:
 
-    def __init__(self, messageType, objectReference, methodId, arguments, requestId):
+    def __init__(self, messageType, objectreference, methodId, arguments, requestId):
         self.messageType = messageType
-        self.objectReference = objectReference
+        self.objectreference = objectreference
         self.methodId = methodId
         self.arguments = arguments
         self.requestId = requestId
 
     def toJson(self):
-        headerData = {
+        header = {
             "messageType": self.messageType,
             "objectreference": self.objectreference,
             "methodId": self.methodId,
             "arguments": self.arguments,
             "requestId": self.requestId
         }
-        return dumps(headerData)
+        return dumps(header)
 
     @classmethod
-    def fromJson(cls, json_str):
-        headerData = loads(json_str)
+    def fromJson(cls, jsonStr):
+        header = loads(jsonStr)
         return cls(
-            headerData["messageType"],
-            headerData["objectreference"],
-            headerData["methodId"],
-            headerData["arguments"],
-            headerData.get("requestId", 0)
+            header["messageType"],
+            header["objectreference"],
+            header["methodId"],
+            header["arguments"],
+            header.get("requestId", 0)
         )
