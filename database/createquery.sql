@@ -24,11 +24,3 @@ CREATE TABLE user (
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
 );
-
-CREATE TABLE review (
-    reviewId SERIAL PRIMARY KEY,
-    movieId INTEGER REFERENCES movie(movieId) ON DELETE CASCADE NOT NULL,
-    userId INTEGER REFERENCES user(userId) ON DELETE CASCADE NOT NULL,
-    rating INTEGER NOT NULL,
-    review TEXT NOT NULL,
-);
