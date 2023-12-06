@@ -17,7 +17,7 @@ CREATE TABLE movie (
     description TEXT NOT NULL
 );
 
-CREATE TABLE user (
+CREATE TABLE userInfo (
     userId SERIAL PRIMARY KEY,
     fname VARCHAR(255) NOT NULL,
     lname VARCHAR(255) NOT NULL,
