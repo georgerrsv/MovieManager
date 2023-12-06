@@ -6,56 +6,55 @@ import time
 
 
 class Proxy:
+
     def __init__(self):
         self.client = UDPClient('localhost', 8080)
         self.count = 0
         self.maxCount = 3
-        self.close = self.client.close
         self.requestId = 1
+        self.close = self.client.close
 
     def addMovie(self, movie):
         movieJson = movie.toJson()
         data = self.doOperation("movie", 1, movieJson)
 
-        if "Successfully" in data:
-            print("\nFilme cadastrado com sucesso!\n")
+        if "Success" in data:
+            print("\nMovie successfully added!\n")
             return
 
         if "Error" in data:
-            print("\nFilme ja cadastrado!\n")
+            print("\nMovie already registered!\n")
             return
 
         try:
             header = Message.fromJson(data)
+            print(header.arguments)
         except Exception as e:
             print("Error:", str(e))
             return
-
-        print(header.arguments)
 
     def removeMovie(self, id):
         data = self.doOperation("movie", 2, id)
 
-        if "Movie not found" in data:
+        if "Error" in data:
             print("\nMovie not found!\n")
             return
 
-        if "Successfully" in data:
-            print("\nFilme removido com sucesso!\n")
+        if "Success" in data:
+            print("\nMovie successfully removed!\n")
             return
 
         try:
             header = Message.fromJson(data)
+            print(header.arguments)
         except Exception as e:
             print("Error:", str(e))
             return
 
-        print(header.arguments)
-
     def showDetails(self, id):
         data = self.doOperation("movie", 3, id)
 
-        if "Movie not found" in data:
+        if "Error" in data:
             print("\nMovie not found!\n")
             return
 
@@ -87,7 +86,7 @@ class Proxy:
 
     def timeout(self):
         if self.count < self.maxCount:
-            print("\nTimeout!\n")
+            print("\nResponse time exceeded.\n")
             time.sleep(1)
             print("Trying again...")
             time.sleep(1)
