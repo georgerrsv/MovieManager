@@ -52,24 +52,6 @@ class userProxy:
                 print("Error:", str(e))
                 return
             
-        def recovery(self, email):
-            data = self.doOperation("user", "recovery", email)
-
-            if "Error" in data:
-                print("\nUser not found!\n")
-                return
-
-            if "Success" in data:
-                print("\nEmail sent!\n")
-                return
-
-            try:
-                header = Message.fromJson(data)
-                print(header.arguments)
-            except Exception as e:
-                print("Error:", str(e))
-                return
-            
         def removeUser(self, userId):
             data = self.doOperation("user", "remove", userId)
 
@@ -113,7 +95,7 @@ class userProxy:
                 header = Message.fromJson(data)
                 catalog = json.loads(header.arguments)
                 for user in catalog:
-                    print(f"\nID: {user['userId']}\nUsername: {user['fname']} {user['lname']}")
+                    print(f"\nID: {user['userId']}\nUsername: {user['fname']} {user['lname']}\n")
             except Exception as e:
                 print("Error:", str(e))
                 return

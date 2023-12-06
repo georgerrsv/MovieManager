@@ -27,7 +27,7 @@ def tryInput(prompt):
 print("-------------------------------------")
 print("Movie catalog manager")
 print("-------------------------------------")
-print("Options:\n1-Create account\n2-Login\n3-Lost account\n4-Clear screen\n5-Exit")
+print("Options:\n1-Create account\n2-Login\n3-Clear screen\n4-Exit")
 print("-----------------------------------")
 
 while True:
@@ -50,16 +50,16 @@ while True:
 
         while True:
 
-            print("Options:\n1-Add movie\n2-Remove movie\n3-Show movie details\n4-Exit")
+            print("Options:\n1-Add movie\n2-Remove movie\n3-Show movie details\n4-Show catalog\n5-Logout")
             option = tryInput("Choose your option: ")
 
             if option == 1:
                 title = input("Title: ")
                 director = input("Director: ")
                 year = tryInput("Year: ")
-                duration = tryInput("Duration (in minutes): ")
+                duration = tryInput("Duration: ")
                 genre = input("Genre: ")
-                classification = input("Classification: ")
+                classification = tryInput("Classification: ")
                 rating = tryInput("Rating: ")
                 description = input("Description: ")
                 movie = Movie(title, director, year, duration, genre, classification, rating, description)
@@ -74,6 +74,9 @@ while True:
                 movieProxy.showDetails(id)
 
             elif option == 4:
+                movieProxy.showCatalog()
+
+            elif option == 5:
                 print("Logging out...")
                 time.sleep(1)
                 userProxy.close()
@@ -84,19 +87,14 @@ while True:
                 print("Error: invalid option")
 
     elif option == 3:
-        print("Recover password")
-        email = input("Email: ")
-        userProxy.recovery(email)
-
-    elif option == 4:
         system("clear")
         print("-------------------------------------")
         print("Movie catalog manager")
         print("-------------------------------------")
-        print("Options:\n1-Create account\n2-Login\n3-Forget email or password\n4-Clear screen\n5-Exit")
+        print("Options:\n1-Create account\n2-Login\n3-Clear screen\n4-Exit")
         print("-----------------------------------")
 
-    elif option == 5:
+    elif option == 4:
         print("Exiting...")
         time.sleep(1)
         break
