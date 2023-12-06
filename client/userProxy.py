@@ -31,6 +31,26 @@ class userProxy:
             except Exception as e:
                 print("Error:", str(e))
                 return
+        
+        def login(self, email, password):
+            user = User("", "", email, password)
+            userJson = user.toJson()
+            data = self.doOperation("user", "login", userJson)
+
+            if "Error" in data:
+                print("\nUser not found!\n")
+                return
+
+            if "Success" in data:
+                print("\nUser successfully logged in!\n")
+                return
+
+            try:
+                header = Message.fromJson(data)
+                print(header.arguments)
+            except Exception as e:
+                print("Error:", str(e))
+                return
             
         def removeUser(self, userId):
             data = self.doOperation("user", "remove", userId)
