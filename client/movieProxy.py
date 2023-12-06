@@ -5,7 +5,7 @@ from message import Message
 import time
 
 
-class Proxy:
+class movieProxy:
 
     def __init__(self):
         self.client = UDPClient('localhost', 8080)
